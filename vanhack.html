@@ -1,0 +1,35 @@
+<div class="title-container">
+    <div class="titles">
+        <h1>VanHack<br>Events</h1>
+    </div>
+</div>
+<aside class="side-menu "id="side-menu">
+    <p class="your-events">Your Events:</p>
+    <ul id="your-events-list">You haven't applied to events yet.</ul>
+</aside>
+<div class="nav-toggle" onclick="toggleNavDisplay()">
+    <div id="icon">
+        <div id="bar-1" class="bar"></div>
+        <div id="bar-2" class="bar"></div>
+        <div id="bar-3" class="bar"></div>
+    </div>
+</div>
+<div class="vanhack-events">
+    <p class="main-text">Check out every upcoming event and activity we planned for you.
+    We recomend you apply as soon as possible since there's limited availability.
+    If you want to have full access to all our events and activities, you should try Premium.
+    </p>
+    <div class="main-cta">
+        <button class="primary" onclick="goPremium()">Go Premium</button>
+    </div>
+    <div id="featured-events" class="featured-events"></div>
+</div>
+<div id="alert-message">
+    <p id="alert-message-text"></p>
+</div>
+<div id="modal" class="modal">
+    <div id="modal-box" class="modal-box">
+        <button id="close-modal" class="close-modal" onclick="hideModal()"></button>
+        <div id="modal-content"></div>
+    </div>
+</div>

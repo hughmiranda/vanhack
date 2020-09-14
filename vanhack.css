@@ -1,0 +1,612 @@
+html {
+    height: auto;
+}
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: whitesmoke;
+    margin: 0;
+    height: auto;
+    overflow-x: hidden;
+}
+
+.disable-scroll {
+    overflow: hidden;
+}
+
+.vanhack-events {
+    height: 100vh;
+    padding: 20px;
+}
+
+.main-text {
+    color: gray;
+    text-align: center;
+    width: 50%;
+    font-size: 18px;
+    font-weight: 100;
+    margin: auto;
+}
+
+.main-cta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.main-cta button {
+    background-color: #2089E6;
+    color: white;
+    border: 1px solid #2089E6;
+    border-radius: 3px;
+    margin: 10px;
+    transition: all 0.3s;
+    font-size: 16px;
+    padding: 10px 50px;
+}
+
+
+.main-cta button:hover {
+    background-color: #52AEFF;
+    color: whitesmoke;
+    border: 1px solid #52AEFF;
+}
+
+.title-container {
+    background-image: linear-gradient(
+        45deg,
+        #2089E6,
+        #52AEFF,
+        #85C6FF,
+        #85C6FF,
+        #85C6FF,
+        #52AEFF,
+        #2089E6);
+    padding: 10px;
+    margin-bottom: 50px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+
+.title-container::before {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-bottom: 150px solid whitesmoke;
+    border-left: 100vw solid transparent;
+    content: "";
+}
+
+.title-container h1 {
+    color: whitesmoke;
+    margin: 0 10px;
+    font-size: 50px;
+}
+
+.title-container h2 {
+    color: white;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#icon .bar {
+    background-color: #fff;
+    width: 25px;
+    height: 3px;
+    margin: 3px 0;
+    transition: all 0.3s;
+}
+
+#icon.icon--cross #bar-1 {
+    width: 12.5px;
+    transform: rotate(-45deg) translate(6px,9px);
+}
+
+#icon.icon--cross #bar-2 {
+    transform: rotate(45deg);
+}
+
+#icon.icon--cross #bar-3 {
+    width: 12.5px;
+    transform: rotate(-45deg) translateX(1px);
+}
+
+.nav-toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    z-index: 2;
+}
+
+.side-menu {
+    position: absolute;
+    z-index: 1;
+    background-color: #2089E6;
+    color: white;
+    width: 25%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    transition: transform 0.3s;
+    padding: 25px 10px;
+    box-sizing: border-box;
+   overflow-y: scroll;
+}
+
+.side-menu--displayed {
+    transform: translateX(-100%);
+}
+
+.side-menu .your-events {
+   text-align: center;
+}
+
+.side-menu #your-events-list {
+   margin: 0;
+   padding: 0; 
+   text-align: center;
+}
+
+.side-menu #your-events-list li {
+   list-style-type: none;
+   text-align: left;
+}
+
+.applied-event {
+    cursor: pointer;
+    list-style-type: none;
+    background-color: whitesmoke;
+    color: #2089E6;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    overflow: hidden;
+    position: relative;
+    margin-right: 30px;
+}
+
+.applied-event:hover {
+    background-color: #52AEFF;
+    color: whitesmoke;
+}
+
+.applied-event p {
+    white-space: pre;
+}
+
+.applied-event .applied-img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 25px;
+}
+
+.applied-event .applied-title {
+    overflow: hidden;
+    width: 75%;
+}
+
+.overflow-mist {
+    position: absolute;
+    background: linear-gradient(
+        to right,
+         rgba(245,245,245,0) 80%, 
+         rgba(245,245,245,0.5) 90%,
+         rgba(245,245,245,1) 100%);
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.applied-event:hover .overflow-mist{
+    background: linear-gradient(
+        to right,
+         rgba(81, 174, 255,0) 80%, 
+         rgba(81, 174, 255,0.5) 90%,
+         rgba(81, 174, 255,1) 100%);
+}
+
+.applied-event .applied-img img {
+    position: static;
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+#alert-message {
+    position: fixed;
+    top: -50px;
+    width: 100vw;
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.alert-message--display {
+    transform: translateY(100%);
+}
+
+#alert-message.alert-message--success {
+    background: #20E65B;
+}
+
+#alert-message.alert-message--error {
+    background: #EC3A3A;
+}
+
+#alert-message-text {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#alert-message-text button {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 10px;
+}
+
+#alert-message-text .cta-buttons--error .go-premium {
+    background: white;
+    color: #EC3A3A;
+}
+
+button {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.icon {
+    fill:gray;
+    width: 14px;
+}
+
+.close-icon {
+    fill: #2089E6;
+    width: 20px;
+    transition: all 0.3s;
+}
+
+.close-icon:hover {
+    fill: #52AEFF;
+}
+
+.close-modal {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    margin: 5px;
+    top: 0;
+    left: -5;
+}
+
+.close-modal:focus {
+    outline: none;
+}
+
+.featured-events {
+    display: grid;
+    gap: 10px 10px;
+    grid-auto-rows: 225px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.event-card {
+    background-color: white;
+    box-shadow: 3px 3px 3px #C9C9C9;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    border-radius: 5px;
+    transition: all 0.3s;
+    margin: 10px;
+    grid-row: span 1;
+    font-size: 14px;
+    color: gray;
+}
+
+.event-card .event-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.event-card .event-dates {
+    font-size: 16px;
+}
+
+.event-card:hover {
+    box-shadow: 5px 5px 5px #C9C9C9;
+    transform: scale(1.01);
+}
+
+.event-card img {
+    transition: all 0.75s;
+}
+
+.event-card:hover img{
+    transform: scale(1.1);
+}
+
+.event-card  p {
+    margin: 3px 0;
+    text-align: left;
+}
+
+.event-description {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.event-description .event-info {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    overflow-y: scroll;
+}
+
+.event-description .cta-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cta-buttons button {
+    background-color: transparent;
+    color: #2089E6;
+    border: 1px solid #2089E6;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px 15px;
+    transition: all 0.3s;
+}
+
+.cta-buttons a {
+    background-color: transparent;
+    color: #2089E6;
+    border: 1px solid #2089E6;
+    border-radius: 3px;
+    margin: 5px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.cta-buttons button:hover {
+    background-color: #52AEFF;
+    color: whitesmoke;
+    border: 1px solid #52AEFF;
+}
+
+.cta-buttons a:hover {
+    background-color: #52AEFF;
+    color: whitesmoke;
+    border: 1px solid #52AEFF;
+}
+
+.cta-buttons .primary-button {
+    background-color: #2089E6;
+    color: white;
+    border: 1px solid #2089E6;
+}
+
+.event-card .event-img {
+    width: 33%;
+    overflow: hidden;
+}
+
+.event-card .event-img img {
+    height: 100%;
+    width: auto;
+    position: relative;
+    left: -100%;
+}
+
+.stand-out-card {
+    flex-flow: column;
+    justify-content: space-between;
+    grid-row: span 2;
+}
+
+.stand-out-card .event-description {
+    height: 40%;
+}
+
+.stand-out-card .event-img {
+    width: 100%;
+    height: 60%;
+    overflow-y: hidden;
+}
+
+.stand-out-card .event-img img {
+    position: static;
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.premium-card {
+    background: linear-gradient(to right, #000000, #383838);
+}
+
+.premium-card .event-title{
+    color: white;
+}
+
+.event-premium {
+    display: none;
+}
+
+.premium-card .event-premium {
+    color: #2089E6;
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    filter: opacity(0);
+    background-color: rgba(0,0,0,0.75);
+    transition: all 0.3s;
+    pointer-events:none;
+}
+
+.modal--display {
+    filter: opacity(1);
+    pointer-events: all;
+}
+
+.modal-box {
+    z-index: 4;
+    background-color: white;
+    filter: opacity(0);
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+    transition: all 0.3s;
+    transition-delay: 0.3s;
+    width: 60%;
+    height: 60%;
+    position: relative;
+}
+
+.modal-box--display {
+    filter: opacity(1);
+}
+
+#modal-content {
+    height: 100%;
+    width: 100%;
+}
+
+.event-details {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.details-info {
+    overflow-y: auto;
+}
+
+.details-description {
+    height: 100%;
+    width: 67%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    font-size: 14px;
+    padding: 25px;
+    background-image: linear-gradient(to left,
+    rgba(255, 255, 255, 0.8),
+    rgba(255,255,255, 1) 50%);
+    color: black;
+    box-sizing: border-box;
+}
+
+.details-description .icon {
+    fill: black;
+}
+
+.details-description .cta-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.details-description .cta-buttons button{
+    font-size: 16px;
+    padding: 10px 50px;
+    margin-top: 10px;
+}
+
+.details-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 50px 0 15px 0;
+}
+
+.details-dates {
+    font-size: 20px;
+    text-align: center;
+}
+
+.details-premium {
+    color: #2089E6;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 10px;
+}
+
+.premium-details .details-description {
+    background-image: linear-gradient(to left,
+    rgba(0,0,0, 0.8),
+    rgba(0,0,0, 1) 50%);
+    color: white;
+}
+
+.premium-details .details-description .icon {
+    fill: white;
+}
+
+
+.premium-details .details-title{
+    color: white;
+}
+
+.details-premium {
+    display: none;
+}
+
+.premium-details .details-premium {
+    display: block;
+}
